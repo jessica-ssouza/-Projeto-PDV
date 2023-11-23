@@ -1,0 +1,36 @@
+unit ImprimirBarras;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  Tfrm_imprimirBarras = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    private
+  { Private declarations }
+    procedure gerarCodigo (codigo: string; Canvas: TCanvas);
+
+    public
+  { Public declarations }
+  end;
+
+var
+  frm_imprimirBarras: Tfrm_imprimirBarras;
+
+implementation
+
+{$R *.dfm}
+
+end.

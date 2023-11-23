@@ -1,0 +1,312 @@
+unit Funcionários;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+
+type
+  Tfrm_funcionarios = class(TForm)
+    txt_buscarNome: TEdit;
+    rb_nome: TRadioButton;
+    rb_cpf: TRadioButton;
+    txt_buscarCpf: TMaskEdit;
+    txt_endereco: TEdit;
+    txt_nome: TEdit;
+    lb_nome: TLabel;
+    txt_telefone: TMaskEdit;
+    cb_cargos: TComboBox;
+    lb_endereco: TLabel;
+    lb_telefone: TLabel;
+    lb_buscar: TLabel;
+    lb_cargos: TLabel;
+    DBGrid1: TDBGrid;
+    btn_novo: TSpeedButton;
+    txt_cpf: TMaskEdit;
+    lb_cpf: TLabel;
+    btn_salvar: TSpeedButton;
+    btn_editar: TSpeedButton;
+    btn_excluir: TSpeedButton;
+procedure FormShow(Sender: TObject);
+procedure btn_novoClick(Sender: TObject);
+procedure btn_salvarClick(Sender: TObject);
+procedure DBGrid1CellClick(Column: TColumn);
+procedure btn_editarClick(Sender: TObject);
+procedure btn_excluirClick(Sender: TObject);
+procedure txt_buscarCpfChange(Sender: TObject);
+    procedure txt_buscarNomeChange(Sender: TObject);
+  private
+    { Private declarations }
+procedure limpar;
+procedure habilitarCampos;
+procedure desabilitarCampos;
+
+procedure associarCampos;
+procedure listar;
+
+procedure carregarCombobox;
+procedure buscarNome;
+procedure buscarCpf;
+
+  public
+    { Public declarations }
+end;
+
+var
+  frm_funcionarios: Tfrm_funcionarios;
+  id: string;
+  cpfAntigo: string;
+implementation
+
+uses
+  Modulo;
+
+{$R *.dfm}
+
+{ Tfrm_funcionarios }
+
+procedure Tfrm_funcionarios.associarCampos;
+begin
+  dm.tb_func.FieldByName('nome').Value := txt_nome.Text;
+  dm.tb_func.FieldByName('cpf').Value := txt_cpf.Text;
+  dm.tb_func.FieldByName('telefone').Value := txt_telefone.Text;
+  dm.tb_func.FieldByName('endereco').Value := txt_endereco.Text;
+  dm.tb_func.FieldByName('cargos').Value := cb_cargos.Text;
+  dm.tb_func.FieldByName('data').Value := DateToStr(Date);
+end;
+
+procedure Tfrm_funcionarios.btn_editarClick(Sender: TObject);
+var
+  cpf: string ;
+begin
+  if Trim(txt_nome.Text) = '' then
+  begin
+    MessageDlg('Preencha o nome!', mtInformation, mbOKCancel, 0);
+    txt_nome.SetFocus;
+    exit;
+  end;
+
+  if Trim(txt_cpf.Text) = '' then
+  begin
+    MessageDlg('Preencha o cpf!', mtInformation, mbOKCancel, 0);
+    txt_cpf.SetFocus;
+    exit;
+  end;
+
+  if cpfAntigo <> txt_cpf.Text then
+  begin
+  //VERIFICAR SE O CPF JÁ ESTÁ CADASTRADO
+    dm.query_func.Close;
+    dm.query_func.SQL.Clear;
+    dm.query_func.SQL.Add ('SELECT * from funcionarios where cpf = ' + QuotedStr(Trim(txt_cpf.Text)));
+    dm.query_func.Open;
+
+  if not dm.query_func.isEmpty then
+  begin
+    cpf := dm.query_func ['cpf'];
+    MessageDlg('O cpf '  + cpf + ' já está cadastrado!', mtInformation, mbOKCancel, 0);
+    txt_cpf.Text := '';
+    txt_cpf.SetFocus;
+    exit;
+  end;
+
+  end;
+
+end;
+
+procedure Tfrm_funcionarios.btn_excluirClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja excluir o registro?' , mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    dm.tb_func.Delete;
+    MessageDlg('Excluído com sucesso!', mtInformation, mbOKCancel, 0);
+
+    listar;
+
+    btn_editar.Enabled := False;
+    btn_excluir.Enabled := False;
+    txt_nome.Text := '';
+  end;
+
+end;
+
+procedure Tfrm_funcionarios.btn_novoClick(Sender: TObject);
+begin
+  habilitarCampos;
+  dm.tb_func.Insert;
+  btn_salvar.Enabled := True;
+end;
+
+procedure Tfrm_funcionarios.btn_salvarClick(Sender: TObject);
+var
+cpf: string ;
+begin
+  if Trim(txt_nome.Text) = '' then
+  begin
+    MessageDlg('Preencha o nome!', mtInformation, mbOKCancel, 0);
+    txt_nome.SetFocus;
+    exit;
+  end;
+
+  if Trim(txt_cpf.Text) = '' then
+  begin
+    MessageDlg('Preencha o cpf!', mtInformation, mbOKCancel, 0);
+    txt_cpf.SetFocus;
+    exit;
+  end;
+
+//VERIFICAR SE O CPF JÁ ESTÁ CADASTRADO
+  dm.query_func.Close;
+  dm.query_func.SQL.Clear;
+  dm.query_func.SQL.Add ('SELECT * from funcionarios where cpf = ' + QuotedStr(Trim(txt_cpf.Text)));
+  dm.query_func.Open;
+
+  if not dm.query_func.isEmpty then
+  begin
+    cpf := dm.query_func ['cpf'];
+    MessageDlg('O cpf '  + cpf + ' já está cadastrado!', mtInformation, mbOKCancel, 0);
+    txt_cpf.Text := '';
+    txt_cpf.SetFocus;
+    exit;
+  end;
+
+  associarCampos;
+  dm.query_func.Close;
+  dm.query_func.SQL.Clear;
+  dm.query_func.SQL.Add ('UPDATE funcionarios set nome = :nome, cpf = :cpf, endereco = :endereco, telefone = :telefone, cargo = :cargo where id = :id');
+  dm.query_func.ParamByName('nome').Value := txt_nome.Text;
+  dm.query_func.ParamByName('cpf').Value := txt_cpf.Text;
+  dm.query_func.ParamByName('endereco').Value := txt_endereco.Text;
+  dm.query_func.ParamByName('telefone').Value := txt_telefone.Text;
+  dm.query_func.ParamByName('cargo').Value := cb_cargos.Text;
+  dm.query_func.ParamByName('id').Value := id;
+  dm.query_func.ExecSQL;
+
+  listar;
+
+  MessageDlg('Editado com sucesso!', mtInformation, mbOKCancel, 0);
+  btn_editar.Enabled := False;
+  btn_excluir.Enabled := False;
+
+  limpar;
+  desabilitarCampos;
+end;
+
+procedure Tfrm_funcionarios.buscarCpf;
+begin
+  dm.query_func.Close;
+  dm.query_func.SQL.Clear;
+  dm.query_func.SQL.Add ('select * from funcionarios where cpf = :cpf order by nome asc');
+  dm.query_func.ParamByName('cpf').Value := txt_buscarCpf.Text;
+  dm.query_func.Open;
+end;
+
+procedure Tfrm_funcionarios.buscarNome;
+begin
+  dm.query_func.Close;
+  dm.query_func.SQL.Clear;
+  dm.query_func.SQL.Add ('select * from funcionarios where nome LIKE :nome order by nome asc');
+  dm.query_func.ParamByName('nome').Value := txt_buscarNome.Text + '%' ;
+  dm.query_func.Open;
+end;
+
+procedure Tfrm_funcionarios.carregarCombobox;
+begin
+  dm.query_cargos.Close;
+  dm.query_cargos.Open;
+  if not dm.query_cargos.isEmpty then
+  begin
+    while not dm.query_cargos.Eof do
+  begin
+    cb_cargos.Items.Add(dm.query_cargos.FieldByName('cargo').AsString);
+    dm.query_cargos.Next;
+  end;
+
+  end;
+
+end;
+
+procedure Tfrm_funcionarios.DBGrid1CellClick(Column: TColumn);
+begin
+  habilitarCampos;
+  btn_editar.Enabled := True;
+  btn_excluir.Enabled := True;
+
+  dm.tb_func.Edit;
+
+  if dm.query_func.FieldbyName ('nome').Value <> null then
+  txt_nome.Text := dm.query_func.FieldbyName ('nome').Value;
+
+  txt_cpf.Text := dm.query_func.FieldbyName ('cpf').Value;
+
+  cb_cargos.Text := dm.query_func.FieldbyName ('cargo').Value;
+
+  if dm.query_func.FieldbyName ('telefone').Value <> null then
+  txt_telefone.Text := dm.query_func.FieldbyName ('telefone').Value;
+
+  if dm.query_func.FieldbyName ('endereco').Value <> null then
+  txt_endereco.Text := dm.query_func.FieldbyName ('endereco').Value;
+
+  id := dm.query_func.FieldbyName ('id').Value;
+
+  cpfAntigo := dm.query_func.FieldbyName ('cpf').Value;
+end;
+
+procedure Tfrm_funcionarios.desabilitarCampos;
+begin
+  txt_nome.Enabled := False;
+  txt_cpf.Enabled := False;
+  txt_endereco.Enabled := False;
+  txt_telefone.Enabled := False;
+  cb_cargos.Enabled := False;
+end;
+
+procedure Tfrm_funcionarios.FormShow(Sender: TObject);
+begin
+  desabilitarCampos;
+  dm.tb_func.Active := True;
+
+  listar;
+
+  carregarCombobox;
+  cb_cargos.ItemIndex := 0;
+end;
+
+procedure Tfrm_funcionarios.habilitarCampos;
+begin
+  txt_nome.Enabled := True;
+  txt_cpf.Enabled := True;
+  txt_endereco.Enabled := True;
+  txt_telefone.Enabled := True;
+  cb_cargos.Enabled := True;
+end;
+
+procedure Tfrm_funcionarios.limpar;
+begin
+  txt_nome.Text := '';
+  txt_cpf.Text := '';
+  txt_endereco.Text := '';
+  txt_telefone.Text := '';
+end;
+
+procedure Tfrm_funcionarios.listar;
+begin
+  dm.query_func.Close;
+  dm.query_func.SQL.Clear;
+  dm.query_func.SQL.Add ('select * from funcionarios order by nome asc');
+  dm.query_func.Open;
+end;
+
+procedure Tfrm_funcionarios.txt_buscarCpfChange(Sender: TObject);
+begin
+  buscarCpf;
+end;
+
+procedure Tfrm_funcionarios.txt_buscarNomeChange(Sender: TObject);
+begin
+  buscarNome;
+end;
+
+end.

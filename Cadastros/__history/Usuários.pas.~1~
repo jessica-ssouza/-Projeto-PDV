@@ -1,0 +1,24 @@
+unit Usuários;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFrm_usuarios = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frm_usuarios: TFrm_usuarios;
+
+implementation
+
+{$R *.dfm}
+
+end.

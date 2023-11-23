@@ -1,0 +1,128 @@
+object frm_imprimirBarras: Tfrm_imprimirBarras
+  Left = 0
+  Top = 0
+  Caption = 'Imprimir C'#243'digo de Barras'
+  ClientHeight = 297
+  ClientWidth = 782
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 782
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+    ExplicitLeft = 320
+    ExplicitTop = 136
+    ExplicitWidth = 185
+    object Image1: TImage
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 8
+      ExplicitTop = 3
+      ExplicitHeight = 38
+    end
+    object Image2: TImage
+      AlignWithMargins = True
+      Left = 200
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 196
+      ExplicitTop = 3
+      ExplicitHeight = 38
+    end
+    object Image3: TImage
+      AlignWithMargins = True
+      Left = 396
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 392
+      ExplicitTop = 3
+      ExplicitHeight = 38
+    end
+    object Image4: TImage
+      AlignWithMargins = True
+      Left = 592
+      Top = 4
+      Width = 186
+      Height = 33
+      Align = alClient
+      ExplicitLeft = 584
+      ExplicitTop = 3
+      ExplicitWidth = 190
+      ExplicitHeight = 38
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 41
+    Width = 782
+    Height = 41
+    Align = alTop
+    TabOrder = 1
+    ExplicitTop = 8
+    object Image5: TImage
+      AlignWithMargins = True
+      Left = 4
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 8
+      ExplicitTop = 3
+      ExplicitHeight = 38
+    end
+    object Image6: TImage
+      AlignWithMargins = True
+      Left = 200
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 196
+      ExplicitTop = 3
+      ExplicitHeight = 38
+    end
+    object Image7: TImage
+      AlignWithMargins = True
+      Left = 396
+      Top = 4
+      Width = 190
+      Height = 33
+      Align = alLeft
+      ExplicitLeft = 387
+      ExplicitTop = 5
+      ExplicitHeight = 39
+    end
+    object Image8: TImage
+      AlignWithMargins = True
+      Left = 592
+      Top = 4
+      Width = 186
+      Height = 33
+      Align = alClient
+      ExplicitLeft = 584
+      ExplicitTop = 3
+      ExplicitWidth = 190
+      ExplicitHeight = 38
+    end
+  end
+end

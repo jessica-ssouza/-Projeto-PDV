@@ -1,0 +1,291 @@
+unit Usuarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFrm_usuarios = class(TForm)
+    DBGrid1: TDBGrid;
+    btn_novo: TSpeedButton;
+    lb_nome: TLabel;
+    edt_nome: TEdit;
+    lb_buscar: TLabel;
+    txt_buscarNome: TEdit;
+    btn_salvar: TSpeedButton;
+    btn_editar: TSpeedButton;
+    btn_excluir: TSpeedButton;
+    btn_buscarFunc: TSpeedButton;
+    Label1: TLabel;
+    edt_senha: TEdit;
+    Label2: TLabel;
+    edt_usuario: TEdit;
+    procedure btn_buscarFuncClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btn_salvarClick(Sender: TObject);
+    procedure btn_novoClick(Sender: TObject);
+    procedure txt_buscarNomeChange(Sender: TObject);
+    procedure btn_editarClick(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure btn_excluirClick(Sender: TObject);
+    private
+  { Private declarations }
+
+    procedure limpar;
+    procedure habilitarCampos;
+    procedure desabilitarCampos;
+
+    procedure associarCampos;
+    procedure listar;
+    procedure buscarNome;
+
+    public
+  { Public declarations }
+end;
+
+var
+  frm_usuarios: TFrm_usuarios;
+  usuarioAntigo: string;
+implementation
+
+uses
+  Funcionarios, Modulo;
+
+{$R *.dfm}
+
+procedure TFrm_usuarios.associarCampos;
+begin
+  dm.tb_usuarios.FieldByName('nome').Value := edt_nome.Text;
+  dm.tb_usuarios.FieldbyName('usuario').Value := edt_usuario.Text;
+  dm.tb_usuarios.FieldByName('senha').Value := edt_senha.Text;
+  dm.tb_usuarios.FieldByName('cargo').Value := cargoFunc;
+  dm.tb_usuarios.FieldByName('id').Value := id;
+end;
+
+procedure TFrm_usuarios.btn_buscarFuncClick(Sender: TObject);
+begin
+  chamada := 'Func';
+  frm_funcionarios := TFrm_funcionarios.Create(self);
+  frm_funcionarios.Show;
+end;
+
+procedure TFrm_usuarios.btn_editarClick(Sender: TObject);
+  var
+usuario: string ;
+begin
+  if Trim(edt_nome.Text) = '' then
+  begin
+    MessageDlg('Preencha o nome!', mtInformation, mbOKCancel, 0);
+    edt_nome.SetFocus;
+    exit;
+  end;
+
+  if Trim(edt_usuario.Text) = '' then
+  begin
+    MessageDlg('Preencha o usuário!', mtInformation, mbOKCancel, 0);
+    edt_usuario.SetFocus;
+    exit;
+  end;
+
+  if Trim(edt_senha.Text) = '' then
+  begin
+    MessageDlg('Preencha s senha!', mtInformation, mbOKCancel, 0);
+    edt_senha.SetFocus;
+    exit;
+  end;
+
+  if usuarioAntigo <> edt_usuario.Text then
+  begin
+    //Verificar se o usuário já está cadastrado
+    dm.query_usuarios.Close;
+    dm.query_usuarios.SQL.Clear;
+    dm.query_usuarios.SQL.Add ('SELECT * from usuarios where usuario = ' + QuotedStr(Trim(edt_usuario.Text)));
+    dm.query_usuarios.Open;
+
+    if not dm.query_usuarios.isEmpty then
+    begin
+       usuario := dm.query_usuarios ['usuario'];
+       MessageDlg('O usuário '  + usuario + ' já está cadastrado!', mtInformation, mbOKCancel, 0);
+       edt_usuario.Text := '';
+       edt_usuario.SetFocus;
+       exit;
+    end;
+  end;
+
+  //Associar campos
+  dm.query_usuarios.Close;
+  dm.query_usuarios.SQL.Clear;
+  dm.query_usuarios.SQL.Add('UPDATE usuarios set nome = :nome, usuario = :usuario, senha = :senha where id = :id');
+  dm.query_usuarios.ParamByName('nome').Value := edt_nome.Text;
+  dm.query_usuarios.ParamByName('usuario').Value := edt_usuario.Text;
+  dm.query_usuarios.ParamByName('senha').Value := edt_senha.Text;
+  dm.query_usuarios.ParamByName('id').Value := id;
+  dm.query_usuarios.ExecSQL;
+
+  listar;
+
+  MessageDlg('Editado com sucesso!', mtInformation, mbOKCancel, 0);
+  btn_editar.Enabled := False;
+  btn_excluir.Enabled := False;
+
+  desabilitarCampos;
+end;
+
+procedure TFrm_usuarios.btn_excluirClick(Sender: TObject);
+begin
+  if MessageDlg('Deseja excluir o registro?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    dm.tb_usuarios.Delete;
+    MessageDlg('Excluído com sucesso!', mtInformation, mbOKCancel, 0);
+
+    listar;
+
+    btn_editar.Enabled := False;
+    btn_excluir.Enabled := False;
+    edt_nome.Text := '';
+  end;
+end;
+
+procedure TFrm_usuarios.btn_novoClick(Sender: TObject);
+begin
+  habilitarCampos;
+
+  dm.tb_usuarios.Insert;
+  btn_salvar.Enabled := True;
+end;
+
+procedure TFrm_usuarios.btn_salvarClick(Sender: TObject);
+var
+usuario: string ;
+begin
+  if Trim(edt_nome.Text) = '' then
+  begin
+    MessageDlg('Preencha o nome!', mtInformation, mbOKCancel, 0);
+    edt_nome.SetFocus;
+    exit;
+  end;
+
+  if Trim(edt_usuario.Text) = '' then
+  begin
+    MessageDlg('Preencha o usuário!', mtInformation, mbOKCancel, 0);
+    edt_usuario.SetFocus;
+    exit;
+  end;
+
+  if Trim(edt_senha.Text) = '' then
+  begin
+    MessageDlg('Preencha a senha!', mtInformation, mbOKCancel, 0);
+    edt_senha.SetFocus;
+    exit;
+  end;
+
+  //Verificar se o usuário já está cadastrado
+  dm.query_usuarios.Close;
+  dm.query_usuarios.SQL.Clear;
+  dm.query_usuarios.SQL.Add ('SELECT * from usuarios where usuario = ' + QuotedStr(Trim(edt_usuario.Text)));
+  dm.query_usuarios.Open;
+
+  if not dm.query_usuarios.isEmpty then
+  begin
+    usuario := dm.query_usuarios ['usuario'];
+    MessageDlg('O usuario '  + usuario + ' já está cadastrado!', mtInformation, mbOKCancel, 0);
+    edt_usuario.Text := '';
+    edt_usuario.SetFocus;
+    exit;
+  end;
+
+  associarCampos;
+
+  dm.tb_usuarios.Post;
+  MessageDlg('Salvo com sucesso!', mtInformation, mbOKCancel, 0);
+
+  limpar;
+  desabilitarCampos;
+
+  btn_salvar.Enabled := False;
+
+  listar;
+end;
+
+procedure TFrm_usuarios.buscarNome;
+begin
+  dm.query_usuarios.Close;
+  dm.query_usuarios.SQL.Clear;
+  dm.query_usuarios.SQL.Add ('select * from usuarios where nome LIKE :nome order by nome asc');
+  dm.query_usuarios.ParamByName('nome').Value := txt_buscarNome.Text + '%';
+  dm.query_usuarios.ParamByName('cargo').Value := 'admin';
+  dm.query_usuarios.Open;
+end;
+
+procedure TFrm_usuarios.DBGrid1CellClick(Column: TColumn);
+begin
+  habilitarCampos;
+
+  btn_editar.Enabled := True;
+  btn_excluir.Enabled := True;
+
+  dm.tb_usuarios.Edit;
+
+  edt_nome.Text := dm.query_usuarios.FieldbyName ('nome').Value;
+  edt_usuario.Text := dm.query_usuarios.FieldbyName ('usuario').Value;
+  edt_senha.Text := dm.query_func.FieldbyName ('senha').Value;
+
+  id := dm.query_usuarios.FieldbyName ('id').Value;
+  usuarioAntigo := dm.query_usuarios.FieldbyName ('usuario').Value;
+end;
+
+procedure TFrm_usuarios.desabilitarCampos;
+begin
+  edt_nome.Enabled := False;
+  edt_usuario.Enabled := False;
+  edt_senha.Enabled := False;
+  btn_buscarFunc.Enabled := False;
+end;
+
+procedure TFrm_usuarios.FormActivate(Sender: TObject);
+begin
+  edt_nome.Text := nomeFunc;
+end;
+
+procedure TFrm_usuarios.FormShow(Sender: TObject);
+begin
+  desabilitarCampos;
+
+  dm.tb_usuarios.Active := True;
+
+  listar;
+end;
+
+procedure TFrm_usuarios.habilitarCampos;
+begin
+  edt_usuario.Enabled := True;
+  edt_senha.Enabled := True;
+  btn_buscarFunc.Enabled := True;
+end;
+
+procedure TFrm_usuarios.limpar;
+begin
+  edt_nome.Text := '';
+  edt_usuario.Text := '';
+  edt_senha.Text := '';
+end;
+
+procedure TFrm_usuarios.listar;
+begin
+  dm.query_usuarios.Close;
+  dm.query_usuarios.SQL.Clear;
+  dm.query_usuarios.SQL.Add ('SELECT * from usuarios where cargo <> :cargo order by name asc');
+  dm.query_usuarios.ParamByName('cargo').Value := 'admin';
+  dm.query_usuarios.Open;
+end;
+
+procedure TFrm_usuarios.txt_buscarNomeChange(Sender: TObject);
+begin
+  buscarNome;
+end;
+
+end.

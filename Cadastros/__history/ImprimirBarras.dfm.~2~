@@ -1,0 +1,16 @@
+object frm_imprimirBarras: Tfrm_imprimirBarras
+  Left = 0
+  Top = 0
+  Caption = 'frm_imprimirBarras'
+  ClientHeight = 447
+  ClientWidth = 777
+  Color = 10930928
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+end

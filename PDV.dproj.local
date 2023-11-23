@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/07/27 14:35:42.000.240,=C:\Users\eliel\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/10 08:52:40.000.653,=C:\Users\eliel\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/08/10 08:54:37.000.845,C:\Users\eliel\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Login.pas</Transaction>
+    <Transaction>2023/08/10 08:54:37.000.845,C:\Users\eliel\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Login.dfm</Transaction>
+    <Transaction>2023/08/10 08:54:48.000.484,C:\Users\eliel\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\PDV.dproj</Transaction>
+    <Transaction>2023/08/10 11:43:26.000.093,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/10 11:43:54.000.673,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Menu.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/10 11:43:54.000.673,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Menu.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/11 11:11:02.000.658,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/11 11:11:53.000.219,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Usuários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/11 11:11:53.000.219,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Usuários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/11 11:28:20.000.896,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Usuários.dfm</Transaction>
+    <Transaction>2023/08/11 11:28:20.000.896,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Usuários.pas</Transaction>
+    <Transaction>2023/08/11 11:29:21.000.052,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/11 11:30:28.000.558,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Funcionários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/11 11:30:28.000.558,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Funcionários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 09:16:03.000.281,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Menu.pas</Transaction>
+    <Transaction>2023/08/14 09:16:03.000.281,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Menu.dfm</Transaction>
+    <Transaction>2023/08/14 09:18:15.000.664,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros.pas=</Transaction>
+    <Transaction>2023/08/14 09:32:42.000.072,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Menu.pas</Transaction>
+    <Transaction>2023/08/14 09:40:47.000.896,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 09:42:25.000.286,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 09:42:25.000.286,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/14 12:27:48.000.390,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 12:28:21.000.700,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cargos.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/14 12:28:21.000.700,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cargos.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 12:52:50.000.769,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 12:53:30.000.386,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Modulo.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/08/14 12:53:30.000.386,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Modulo.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+    <Transaction>2023/08/28 16:12:00.000.698,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionarios.pas</Transaction>
+    <Transaction>2023/08/28 16:12:00.000.698,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Funcionarios.dfm</Transaction>
+    <Transaction>2023/08/28 16:16:05.000.077,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuários.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuarios.dfm</Transaction>
+    <Transaction>2023/08/28 16:16:05.000.077,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuários.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Usuarios.pas</Transaction>
+    <Transaction>2023/09/12 16:01:57.000.099,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/09/12 16:03:04.000.040,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Fornecedores.dfm</Transaction>
+    <Transaction>2023/09/12 16:03:04.000.040,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Fornecedores.pas</Transaction>
+    <Transaction>2023/09/21 13:53:44.000.978,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/09/21 13:54:48.000.776,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Produtos.pas</Transaction>
+    <Transaction>2023/09/21 13:54:48.000.776,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\Produtos.dfm</Transaction>
+    <Transaction>2023/10/06 16:32:46.000.046,=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/10/06 16:33:37.000.064,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\ImprimirBarras.pas=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.pas</Transaction>
+    <Transaction>2023/10/06 16:33:37.000.064,C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Cadastros\ImprimirBarras.dfm=C:\Users\eliel\Desktop\Jessica\Delphi\Programador Delphi-Sistemas com Delphi e Mysql\Unit1.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Cadastros"/>
+    <File Path="Cadastros\Fornecedores.pas"/>
+    <File Path="Cadastros\Fornecedores.dfm"/>
+    <File Path="Cadastros\Funcionarios.pas"/>
+    <File Path="Cadastros\Funcionarios.dfm"/>
+    <File Path="Cadastros\ImprimirBarras.pas"/>
+    <File Path="Cadastros\ImprimirBarras.dfm"/>
+    <File Path="Cadastros\Produtos.pas"/>
+    <File Path="Cadastros\Produtos.dfm"/>
+    <File Path="Cadastros\Usuarios.pas"/>
+    <File Path="Cadastros\Usuarios.dfm"/>
+    <File Path="Cargos.pas"/>
+    <File Path="Cargos.dfm"/>
+    <File Path="Login.pas"/>
+    <File Path="Login.dfm"/>
+    <File Path="Menu.pas"/>
+    <File Path="Menu.dfm"/>
+    <File Path="Modulo.pas"/>
+    <File Path="Modulo.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>
