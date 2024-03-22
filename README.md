@@ -1,4 +1,4 @@
 # projeto-pdv
 Introdução do Sistema para PDV
 
-Projeto desenvolvido com a IDE Delphi 10
+Projeto desenvolvido em Pascal com a IDE Delphi 10
